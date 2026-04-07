@@ -1,0 +1,28 @@
+# Ignorar archivos sensibles y generados
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Keep examples
+!.env.example
+
+# Archivos de compilación .NET
+bin/
+obj/
+
+# Node.js
+node_modules/
+
+# Logs
+*.log
+
+# Publicaciones y artefactos
+publish/
+
+# Archivos temporales
+*.tmp
+*.swp
