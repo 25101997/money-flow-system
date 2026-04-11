@@ -1,6 +1,14 @@
-# Web
+docker run -it --rm -v "$PWD":/web -u $(id -u):$(id -g) -w /web -p 4200:4200 livestock-fe-angular-app:latest sh
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
+# solo la primera vez cuando fue descargado
+npm install
+
+#
+ng serve --host 0.0.0.0 --port 4200
+
+# TempFe
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.
 
 ## Development server
 

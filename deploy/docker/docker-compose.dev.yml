@@ -1,5 +1,5 @@
 services:
-  database:
+  db:
     image: mcr.microsoft.com/mssql/server:2022-latest
     restart: unless-stopped
     environment:
@@ -10,8 +10,9 @@ services:
       - "${DB_PORT}:1433"
     volumes:
       - sqlserver-data:/var/opt/mssql
+      - ../../database:/database:ro
     networks:
-      - network
+      - app-network
     healthcheck:
       test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P ${DB_PASSWORD} -C -Q 'SELECT 1' || exit 1"]
       interval: 15s
@@ -29,14 +30,14 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: http://+:8080
-      ConnectionStrings__DefaultConnection: Server=database,1433;Database=${DB_NAME};User Id=${DB_USER};Password=${DB_PASSWORD};TrustServerCertificate=True;
+      ConnectionStrings__DefaultConnection: Server=db,1433;Database=${DB_NAME};User Id=${DB_USER};Password=${DB_PASSWORD};TrustServerCertificate=True;
     volumes:
       - ../../apps/api:/src
     depends_on:
-      database:
+      db:
         condition: service_healthy
     networks:
-      - network
+      - app-network
 
   web:
     build:
@@ -51,7 +52,7 @@ services:
     depends_on:
       - api
     networks:
-      - network
+      - app-network
       
 volumes:
   sqlserver-data:
@@ -59,5 +60,5 @@ volumes:
   node-modules:
 
 networks:
-  network:
+  app-network:
     driver: bridge

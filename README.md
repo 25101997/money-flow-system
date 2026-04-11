@@ -16,3 +16,11 @@ cp .env.example .env
 
 docker compose -f docker-compose.dev.yml up
 
+docker compose --env-file ../../.env -f docker-compose.lan.yml up -d --build
+
+docker compose --env-file .env -f docker-compose.lan.yml up -d --build
+
+docker compose --env-file .env -f docker-compose.prod.yml down -v
+docker compose --env-file .env -f docker-compose.prod.yml up -d --build
+docker compose --env-file .env -f docker-compose.prod.yml ps
+docker compose --env-file .env -f docker-compose.prod.yml logs -f
