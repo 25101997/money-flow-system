@@ -3,30 +3,12 @@ GO
 
 -- Procedimiento para insertar un nuevo TipoDeGasto
 CREATE PROCEDURE mfs.spInsertarTipoDeGasto
-    @Nombre NVARCHAR(200),
-    @Descripcion NVARCHAR(150),
+    @Nombre NVARCHAR(150),
+    @Descripcion NVARCHAR(200),
     @MontoMaximo DECIMAL(7,2)
 AS
 BEGIN
     SET NOCOUNT ON;
-
-    INSERT INTO mfs.TipoDeGasto (Nombre, Descripcion, MontoMaximo)
-    VALUES (@Nombre, @Descripcion, @MontoMaximo);
-
-    -- Retornar el Id generado
-    SELECT SCOPE_IDENTITY() AS NuevoId;
-END;
-GO
-
-
-ALTER PROCEDURE mfs.spInsertarTipoDeGasto
-    @Nombre NVARCHAR(200),
-    @Descripcion NVARCHAR(150),
-    @MontoMaximo DECIMAL(7,2)
-AS
-BEGIN
-    SET NOCOUNT ON;
-
     -- Nueva lógica: validación simple
     IF @MontoMaximo <= 0
     BEGIN
@@ -39,7 +21,9 @@ BEGIN
 
     SELECT SCOPE_IDENTITY() AS NuevoId;
 END;
+GO
 
+--ALTER PROCEDURE mfs.spInsertarTipoDeGasto END;
 
 -- Procedimiento para actualizar un TipoDeGasto existente
 CREATE PROCEDURE mfs.spActualizarTipoDeGasto
@@ -94,7 +78,6 @@ BEGIN
     WHERE IdTipoDeGasto = @IdTipoDeGasto;
 END;
 GO
-
 
 -- Consulta con filtros y paginación
 CREATE PROCEDURE mfs.spBuscarTiposDeGasto
