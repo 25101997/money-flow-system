@@ -14,10 +14,10 @@ import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/fo
 export class AddComponent {
 
   constructor(
-      private tipoDeGastoService: TipoDeGastoService,
-      private formBuilder: FormBuilder,
-      private route: ActivatedRoute,
-      private router: Router,
+    private tipoDeGastoService: TipoDeGastoService,
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
   ) {}
 
   isEditMode = false;

@@ -1,0 +1,92 @@
+<div class="table__container">
+    <div class="table__top">
+      <div><span class="table__title">Movimientos por Tipo De Gasto </span></div>
+      <div class="searchbar"><!-- Inicio seccion buscar --></div>
+      <div>
+        <button routerLink="" class="btn btn__primary__outline">Registrar Movimiento</button>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr >
+          <th><!--inicio columna ID-->
+            <span class="center_x_y">
+              ID 
+            </span>  
+          </th>
+          
+          <th><!--inicio columna Fecha de Nacimiento-->
+            <span class="center_x_y">
+              Fecha
+            </span>  
+          </th>
+
+          <th><!--inicio columna Sexo-->  
+            <span class="center_x_y">
+              Tipo De Gasto
+            </span>  
+          </th>
+
+          <th><!--Columna Peso-->
+            <span class="center_x_y">
+              Descripcion
+            </span>  
+          </th>
+
+          <th><!--inicio columna Fecha de Nacimiento-->
+            <span class="center_x_y">
+              Debitado
+            </span>  
+          </th>
+
+          <th><!--inicio columna Fecha de Nacimiento-->
+            <span class="center_x_y">
+              Acreditado
+            </span>  
+          </th>
+
+          <th><!--inicio columna Fecha de Nacimiento-->
+            <span class="center_x_y">
+              Monto
+            </span>  
+          </th>
+
+          <th><!--inicio columna Fecha de Nacimiento-->
+            <span class="center_x_y">
+              Mes
+            </span>  
+          </th>
+
+          <th><!--inicio columna Fecha de Nacimiento-->
+            <span class="center_x_y">
+              Año
+            </span>  
+          </th>
+
+          <th>
+            Acciones
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of data">
+          <td>{{ row.idBitacoraGastos }}</td>
+          <td>{{ row.insertado }}</td>
+          <td>{{ row.tipoDeGasto }}</td>
+          <td>{{ row.descripcion }}</td>
+          <td>{{ row.debitado }}</td>
+          <td>{{ row.acreditado }}</td>
+          <td>{{ row.monto }}</td>
+          <td>{{ row.mes }}</td>
+          <td>{{ row.anio }}</td>
+          <td>
+            <button [routerLink]="['/bitacora-gastos/edit/', row.idBitacoraGastos]" class="btn btn__primary__outline">Editar</button>
+          </td>        
+        </tr>
+      </tbody>
+    </table>
+    <div class="table__pagination"> 
+      <button class="btn btn__primary__outline" style="margin-right: 2px;">previous</button> <span>1</span> de <span>1</span> <button class="btn btn__primary__outline" style="margin-left: 2px;">next</button>
+    </div>  
+</div>

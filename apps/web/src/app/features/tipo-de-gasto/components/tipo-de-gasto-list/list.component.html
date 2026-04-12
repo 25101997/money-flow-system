@@ -47,7 +47,7 @@
           <td>{{ row.montoMaximo }}</td>
           <td>
             <button [routerLink]="['/tipo-de-gasto/edit/', row.idTipoDeGasto]" class="btn btn__primary__outline">Editar</button>
-            <button [routerLink]="['/tipo-de-gasto/edit/', row.idTipoDeGasto]" class="btn btn__primary__outline">Movimiento</button>
+            <button [routerLink]="['/bitacora-gastos/list/tipo-de-gasto', row.idTipoDeGasto]" class="btn btn__primary__outline">Movimiento</button>
           </td>        
         </tr>
       </tbody>
