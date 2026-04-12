@@ -8,17 +8,28 @@ import { TipoDeGastoRead, TipoDeGastoCreate } from '../models/tipo-de-gasto.mode
 @Injectable({ providedIn: 'root' })
 export class TipoDeGastoService {
 
-  private apiUrl = `${environment.apiBaseUrl}/TipoDeGasto`;
+  private apiUrl: string;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.apiUrl = environment.production
+      ? '/api/TipoDeGasto'
+      : `http://${environment.ip}:${environment.port}/api/TipoDeGasto`;
+  }
 
   // Obtener todos
   getAll(): Observable<TipoDeGastoRead[]> {
     return this.http.get<TipoDeGastoRead[]>(this.apiUrl);
   }
 
-  // Obtener por Id
   // Crear
+  create(tipoDeGasto: TipoDeGastoCreate): Observable<TipoDeGastoRead> {
+    return this.http.post<TipoDeGastoRead>(this.apiUrl, tipoDeGasto);
+  }
+
   // Actualizar
+  update(id: number, tipoDeGasto: TipoDeGastoCreate): Observable<TipoDeGastoRead> {
+    return this.http.put<TipoDeGastoRead>(`${this.apiUrl}/${id}`, tipoDeGasto);
+  }
 
 }
+
