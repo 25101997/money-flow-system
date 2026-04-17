@@ -13,7 +13,7 @@ export class BitacoraGastosService {
 
   constructor(private http: HttpClient) {
     this.apiUrl = environment.production
-      ? '/api/TipoDeGasto'
+      ? '/api/BitacoraGastos'
       : `http://${environment.ip}:${environment.port}/api/BitacoraGastos`;
   }
 

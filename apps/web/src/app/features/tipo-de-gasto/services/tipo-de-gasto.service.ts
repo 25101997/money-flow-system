@@ -21,6 +21,11 @@ export class TipoDeGastoService {
     return this.http.get<TipoDeGastoRead[]>(this.apiUrl);
   }
 
+  // Obtener por Id
+  getById(id: number): Observable<TipoDeGastoRead> {
+    return this.http.get<TipoDeGastoRead>(`${this.apiUrl}/${id}`);
+  }
+
   // Crear
   create(tipoDeGasto: TipoDeGastoCreate): Observable<TipoDeGastoRead> {
     return this.http.post<TipoDeGastoRead>(this.apiUrl, tipoDeGasto);

@@ -1,4 +1,5 @@
 USE MoneyFlowSystemDB;
+GO
 
 -- INSERTAR
 CREATE OR ALTER PROCEDURE mfs.sp_BitacoraGastos_Insertar
@@ -76,6 +77,7 @@ BEGIN
         THROW;
     END CATCH
 END;
+GO
 
 -- ACTUALIZAR
 CREATE OR ALTER PROCEDURE mfs.sp_BitacoraGastos_Actualizar
@@ -152,6 +154,7 @@ BEGIN
         THROW;
     END CATCH
 END;
+GO
 
 -- ELIMINAR
 CREATE OR ALTER PROCEDURE mfs.sp_BitacoraGastos_Eliminar
@@ -188,6 +191,7 @@ BEGIN
         THROW;
     END CATCH
 END;
+GO
 
 -- OBTENER POR ID
 CREATE OR ALTER PROCEDURE mfs.sp_BitacoraGastos_ObtenerPorId
@@ -217,6 +221,7 @@ BEGIN
         ON bg.IdTipoDeGasto = tg.IdTipoDeGasto
     WHERE bg.IdBitacoraGastos = @IdBitacoraGastos;
 END;
+GO
 
 -- OBTENER TODOS
 CREATE OR ALTER PROCEDURE mfs.sp_BitacoraGastos_Listar
@@ -242,6 +247,7 @@ BEGIN
         ON bg.IdTipoDeGasto = tg.IdTipoDeGasto
     ORDER BY bg.Anio DESC, bg.Mes DESC, bg.IdBitacoraGastos DESC;
 END;
+GO
 
 -- LISTAR POR TIPO DE GASTO
 CREATE OR ALTER PROCEDURE mfs.sp_BitacoraGastos_ListarPorTipoDeGasto
@@ -279,3 +285,4 @@ BEGIN
     WHERE bg.IdTipoDeGasto = @IdTipoDeGasto
     ORDER BY bg.Anio DESC, bg.Mes DESC, bg.IdBitacoraGastos DESC;
 END;
+GO

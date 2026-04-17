@@ -35,7 +35,12 @@ docker compose -f docker-compose.dev.yml down
 # si se quiere ver logs 
 docker compose -f docker-compose.dev.yml up -d --build
 docker compose -f docker-compose.dev.yml up -d
+docker compose -f docker-compose.dev.yml up
 
 # si se quiere ocultar logs 
 docker compose --env-file .env -f docker-compose.dev.yml up -d --build
 docker compose --env-file .env -f docker-compose.dev.yml up -d
+
+mkdir -p deploy/nginx/ssl
+
+openssl req -x509 -nodes -days 365 -newkey rsa:2048   -keyout deploy/nginx/ssl/key.pem   -out deploy/nginx/ssl/cert.pem

@@ -11,6 +11,7 @@ services:
     volumes:
       - sqlserver-data:/var/opt/mssql
       - ../../database:/database:ro
+      - ../../database/backups:/backups
     networks:
       - app-network
     healthcheck:
