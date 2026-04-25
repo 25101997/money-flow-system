@@ -1,0 +1,39 @@
+<form class="form_container" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <h2 class="form_title"> Inciar Sesion </h2>
+
+    <div class="form_section">
+      
+        <div class="floating-group">
+          <input type="text" formControlName="idUser" >
+          <label for="idUser">idUser</label>
+        </div>
+
+        <div class="floating-group">
+          <input type="text" formControlName="code" >
+          <label for="code">codigo</label>
+        </div>
+
+        <div class="floating-group">
+            <input type="text" formControlName="user"/>
+            <label for="user">Nombre</label>
+        </div>
+
+        <div class="floating-group">
+            <input type="text" formControlName="pass" />
+            <label for="pass">Usuario</label>
+        </div>
+
+    </div><!--end class="form_section" -->
+    
+      <!-- boton para guardar cambios -->
+    <button type="submit" 
+        class="sqr_rds mt-1" 
+        style="display: flex; margin: 0; padding: 0; background-color: transparent; border: 0px transparent;" >
+        <img    src="/assets/icons/save_disk.png" 
+                alt="" 
+                class="sqr_rds" 
+                style="width: 5rem; height: 5rem;"
+        >
+    </button>
+</form>

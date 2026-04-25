@@ -1,0 +1,77 @@
+<form class="form_container" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <h2 class="form_title"> 
+        <span *ngIf="isEditMode" >Editar</span> 
+        <span *ngIf="!isEditMode">Agregar</span> 
+        Movimiento
+    </h2>
+
+    <div class="form_section">
+    <!-- campo tipo de gasto -->
+        <div class="floating-group">
+            <select formControlName="idTipoDeGasto">
+                    <ng-container *ngFor="let tipo of tiposDeGasto">
+                        <option [value]="tipo.idTipoDeGasto"> {{ tipo.nombre }} </option>
+                    </ng-container>
+            </select>
+            <label for="idTipoDeGasto">Tipo de Gasto</label>
+        </div>
+
+    <!-- campo direccion -->
+        <div class="floating-group">
+            <input type="text" formControlName="descripcion"/>
+            <label for="descripcion">Descripcion</label>
+        </div>
+
+    <!-- campo tipo de movimiento -->
+        <div class="floating-group">
+            <select name="tipoMovimiento" formControlName="tipoMovimiento">
+                <option value="1">Debitar</option>
+                <option value="2">Acreditar</option>
+            </select>
+        </div>
+
+    <!-- campo monto -->
+        <div class="floating-group">
+            <input type="text" formControlName="monto" (keydown)="onlyNumbers($event)" maxlength="7"/>
+            <label for="monto">Monto(1 - 99999)</label>
+        </div>
+
+    <!-- campo mes -->
+        <div class="floating-group">
+            <select name="mes" formControlName="mes">
+                <option value="1">Enero</option>
+                <option value="2">Febrero</option>
+                <option value="3">Marzo</option>
+                <option value="4">Abril</option>
+                <option value="5">Mayo</option>
+                <option value="6">Junio</option>
+                <option value="7">Julio</option>
+                <option value="8">Agosto</option>
+                <option value="9">Septiembre</option>
+                <option value="10">Octubre</option>
+                <option value="11">Nombiembre</option>
+                <option value="12">Diciembre</option>
+            </select>
+            <label for="mes">Mes(1 - 12)</label>
+        </div>
+
+    <!-- campo mes -->
+        <div class="floating-group">
+            <input type="text" formControlName="anio" (keydown)="onlyNumbers($event)" maxlength="4"/>
+            <label for="anio">Ano</label>
+        </div>
+
+    </div><!--end class="form_section" -->
+    
+    <!-- boton para guardar cambios -->
+    <button type="submit" 
+        class="sqr_rds mt-1" 
+        style="display: flex; margin: 0; padding: 0; background-color: transparent; border: 0px transparent;" >
+        <img    src="/assets/icons/save_disk.png" 
+                alt="" 
+                class="sqr_rds" 
+                style="width: 5rem; height: 5rem;"
+        >
+    </button>
+</form>

@@ -1,0 +1,60 @@
+<div class="table__container">
+    <div class="table__top">
+      <div><span class="table__title">Tipos De Gastos</span></div>
+      <div class="searchbar"><!-- Inicio seccion buscar --></div>
+      <div>
+        <button routerLink="/tipo-de-gasto/add" class="btn btn__primary__outline">Agregar</button>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr >
+          <th><!--inicio columna ID-->
+            <span class="center_x_y">
+              ID 
+            </span>  
+          </th>
+          
+          <th><!--inicio columna Sexo-->  
+            <span class="center_x_y">
+              Nombre
+            </span>  
+          </th>
+
+          <th><!--Columna Peso-->
+            <span class="center_x_y">
+              Descripcion
+            </span>  
+          </th>
+
+          <th>
+            Acciones
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of data">
+          <td>{{ row.idTipoDeGasto }}</td>
+          <td>{{ row.nombre }}</td>
+          <td>{{ row.descripcion }}</td>
+          <td>
+            <button [routerLink]="['/tipo-de-gasto/edit/', row.idTipoDeGasto]" class="btn btn__primary__outline">Editar</button>
+            <button
+                [routerLink]="['/bitacora-gastos/list/tipo-de-gasto']"
+                [queryParams]="row"
+                class="btn btn__primary__outline">
+                Movimiento
+            </button>
+          </td>        
+        </tr>
+      </tbody>
+    </table>
+    <div style="display: flex; justify-content: space-around; border-top: 1px solid blueviolet; padding: 5px 10px;"> 
+      <span> Ingresos: {{ ingreso }} </span>
+      <span> Disponible: {{ disponible }} </span>
+    </div>  
+    <div class="table__pagination"> 
+      <button class="btn btn__primary__outline" style="margin-right: 2px;">previous</button> <span>1</span> de <span>1</span> <button class="btn btn__primary__outline" style="margin-left: 2px;">next</button>
+    </div>  
+</div>

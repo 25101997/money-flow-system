@@ -1,0 +1,19 @@
+USE master;
+GO
+
+IF DB_ID('MoneyFlowSystemDB') IS NOT NULL
+BEGIN
+    ALTER DATABASE MoneyFlowSystemDB SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+    DROP DATABASE MoneyFlowSystemDB;
+END
+GO
+
+-- CREAR BASE DE DATOS
+CREATE DATABASE MoneyFlowSystemDB;
+GO
+
+Use MoneyFlowSystemDB;
+GO
+
+SELECT name FROM sys.tables;
+GO

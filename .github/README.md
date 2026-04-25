@@ -27,3 +27,18 @@ ci: configuración de integración continua.
 build: cambios en build, dependencias o infraestructura.
 test: pruebas unitarias o de integración.
 devops: configuracion de archivos
+
+# comandos mas usados para merge pull request
+
+git checkout develop
+git pull origin develop
+
+git merge TodasLasRamasOsubramasCreadas
+
+git push origin develop
+
+git checkout main
+git pull origin main
+git merge develop
+git push origin main
+

@@ -1,0 +1,344 @@
+/* You can add global styles to this file, and also import other style files */
+html, body {
+  font-size: 10px;
+  font-family: 'Inter', sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+* {
+  font-size: inherit; /* Hereda el tamaño definido en el html/body */
+}
+
+.btn{
+  padding: 5px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-right: 2px;
+}
+
+.btn__primary{
+  background-color: #9120bd;
+  color: #ffffff;
+  border: 1px solid #9120bd;
+}
+
+.btn__primary__outline:hover{
+  box-shadow: 0 0 8px 4px rgba(83, 0, 132, 0.3);
+  color: #fff;
+  background-color: #530084;
+}
+
+.btn__primary__outline{
+  background-color: #ffffff;
+  color: #530084;
+  border: 1px solid #530084;
+}
+
+.form-control{
+  padding: 0.5rem;
+  border-radius: 0.8rem;
+  border: 1px solid #9120bd;
+  outline: none;
+}
+
+.m-1{
+  margin: 1rem;
+}
+
+.mt-1{
+  margin-top: 1rem;
+}
+
+.b-1{
+   border: 1px solid #530084;
+}
+
+.cir_rds{
+  border-radius: 50%;
+}
+
+.sqr_rds{
+  border-radius: 0.8rem;
+}
+
+
+/* */
+
+.navbar_menu{
+  background-color: #530084;
+  padding: 1rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.img_icon{
+  width: 3rem;
+  height: 3rem;
+}
+
+.img_icon_btn{
+  display: flex;
+  padding: 0.2rem;
+  margin: 0.1rem;
+  cursor: pointer;
+}
+
+/* Star List components */
+
+.table__container{
+  margin: 20px;
+  border: 1px solid #530084;
+  box-shadow: 0 0 8px 4px rgba(83, 0, 132, 0.3);
+  border-radius: 0.8rem;
+}
+
+.table__top{
+  text-align: center;
+  color: #fff;
+  padding: 10px;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+}
+
+.table__title{
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  color: #530084;
+}
+
+.table__pagination{
+  text-align: center;
+  padding: 10px;
+  border-top: 2px solid #530084;
+}
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th {
+    background-color: #7000a2;
+    color: #fff;
+    cursor: pointer;
+    padding: 0.75rem;
+    text-align: center;
+  }
+
+  td {
+    padding: 0.75rem;
+    text-align: center;
+  }
+
+  tr:hover {
+    background-color: #7000a2;
+    color: #fff;
+
+    button {
+      background-color: transparent;
+      color: #fff;
+      border: 1px solid #fff;
+    }
+
+    button:hover {
+      background-color: #fff;
+      color: #530084;
+      border: 1px solid #fff;
+       box-shadow: 0 0 6px 3px rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  input {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    width: 300px;
+  }
+}
+
+.icon {
+  width: 1rem;
+  height: 1rem;
+  transition: transform 0.3s ease;
+  font-weight: bolder;
+  color: transparent;
+  cursor: pointer;
+}
+
+.icon:hover{
+  color: #fff;
+}
+
+input:checked + .icon {
+  transform: rotate(180deg);
+}
+
+.deg180{
+  transform: rotate(180deg);
+}
+
+
+/* End List components */
+
+
+
+/* Start Form Components */
+
+.form_title{
+  margin: 0;
+  padding: 0.5rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+
+
+/*  End Form Components  */
+
+.center_x_y{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+
+@media (max-width: 600px) {
+  .table__title{
+    font-size: 1.2rem;
+  }
+
+  .searchInput{
+    width: 4rem;
+    
+  }
+
+  .searchSelect{
+    width: 5.2rem;
+    
+  }
+
+
+}
+
+@media (max-width: 600px) {
+  html, body {
+    font-size: 0.6rem;
+  }
+
+  * {
+    font-size: inherit;
+  }
+}
+
+
+
+
+
+
+/*--------------------------------------------------------*/
+
+/* =========================
+   Floating group (inputs)
+   ========================= */
+.floating-group {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 150px;
+  min-width: 140px;
+  margin-top: 20px;
+  box-sizing: border-box;
+}
+
+/* Estilos base */
+.floating-group input,
+.floating-group select,
+.floating-group textarea {
+  width: 100%;
+  padding: 10px 8px;
+  border: 1px solid #a300b5;
+  border-radius: 6px;
+  background: transparent;
+  font-size: 14px;
+  color: #000;
+  outline: none;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+/* Label flotante */
+.floating-group label {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #fff;
+  padding: 0 4px;
+  font-size: 14px;
+  color: #a300b5;
+  pointer-events: none;
+  transition: 0.2s ease;
+}
+
+/* Foco o valor */
+.floating-group input:focus + label,
+.floating-group select:focus + label,
+.floating-group textarea:focus + label,
+.floating-group input:not(:placeholder-shown) + label,
+.floating-group select:not([value=""]) + label,
+.floating-group textarea:not(:placeholder-shown) + label {
+  top: -8px;
+  font-size: 12px;
+  color: #a300b5;
+}
+
+/* =========================
+   Form container
+   ========================= */
+.form_container {
+  box-sizing: border-box;
+  padding: 1.5rem;
+  max-width: 600px;
+  border-radius: 0.8rem;
+  border: 1px solid #530084;
+  box-shadow: 0 0 8px 4px rgba(83, 0, 132, 0.3);
+}
+
+/* =========================
+   Form sections (layout)
+   ========================= */
+.form_section {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;         /* ✅ Permitimos wrap */
+  gap: 12px;
+  align-items: flex-start;
+}
+
+/* 🔑 Regla clave: 3 campos por fila */
+.form_section .floating-group {
+  flex: 1 1 calc(33.333% - 12px);  
+  max-width: calc(33.333% - 12px);
+}
+/* Textarea más ancho (Notas) */
+.floating-group textarea {
+  min-height: 80px;
+}
+
+/* =========================
+   Responsive móvil
+   ========================= */
+@media (max-width: 480px) {
+  .form_section .floating-group {
+    flex: 1 1 100%;
+    max-width: 100%;   /* 1 por fila en móvil */
+  }
+}

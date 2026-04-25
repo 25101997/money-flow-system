@@ -1,0 +1,44 @@
+docker pull mcr.microsoft.com/mssql/server:2022-latest
+
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=ClaveSegura123!" -p 1433:1433 --name sqlserver-test -d mcr.microsoft.com/mssql/server:2022-latest
+
+docker cp ~/repos/biblioteca-escolar/database/init/insertar_datos.sql sqlserver-test:/insertar_datos.sql
+
+docker exec -it -u 0 sqlserver-test /bin/bash
+
+root@dacc922f80db:/# 
+    apt-get update
+    apt-get install -y mssql-tools unixodbc-dev
+    chmod 644 insertar_datos.sql
+    /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'SuperSecret123!' -i insertar_datos.sql
+    
+    /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'SuperSecret123!' -C
+        1> USE Examen;
+        2> GO
+        3> SELECT name FROM sys.tables;
+        4> GO
+        3> QUIT
+        
+root@dacc922f80db:/# exit
+
+docker exec -i sqlserver-test /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'ClaveSegura123!' < ~/repos/biblioteca-escolar/database/init/procedimientos_almacenados.sql
+
+docker start sqlserver-test
+
+money-flow-system/database$
+
+dlopez@dlopez:~/repos/money-flow-system/database$ docker run -it --rm -v "$PWD":/database:ro -w /database --network money-flow-system_app-network mcr.microsoft.com/mssql-tools bash
+
+
+
+/opt/mssql-tools/bin/sqlcmd -S database,1433 -U sa -P 'SuperSecret123!' -i 001_crear_base_de_datos.sql
+
+
+dlopez@dlopez:~/repos/money-flow-system$ chmod 777 ~/repos/money-flow-system/database/backups
+dlopez@dlopez:~/repos/money-flow-system/database$ docker exec -it money-flow-system-db-1 /opt/mssql-tools18/bin/sqlcmd \
+  -S localhost -U sa -P 'SuperSecret123!' -C \
+  -Q "BACKUP DATABASE [MoneyFlowSystemDB] TO DISK = N'/backups/MoneyFlowSystemDB_dev_full.bak' WITH INIT, STATS = 10"
+
+docker exec -it money-flow-system-db-1 /opt/mssql-tools18/bin/sqlcmd \
+  -S localhost -U sa -P 'SuperSecret123!' -C \
+  -Q "RESTORE FILELISTONLY FROM DISK = N'/backups/MoneyFlowSystemDB_dev_full.bak'"
