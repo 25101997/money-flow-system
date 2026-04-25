@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TipoDeGastoService } from '../../services/tipo-de-gasto.service';
 import { TipoDeGastoRead } from '../../models/tipo-de-gasto.model';
+import { SessionService } from 'src/app/features/auth/services/session.service';
 
 @Component({
   selector: 'app-list',
@@ -9,9 +10,13 @@ import { TipoDeGastoRead } from '../../models/tipo-de-gasto.model';
 })
 export class ListComponent {
   
+  user: any;
   data: TipoDeGastoRead[] = [];
 
-  constructor(private tipoDeGastoService: TipoDeGastoService) {}
+  constructor(
+    private tipoDeGastoService: TipoDeGastoService,
+    private sessionService: SessionService
+  ) {}
 
   tipodecuenta = 'monetaria';
   ingreso = 9500;
@@ -19,6 +24,11 @@ export class ListComponent {
   total = 0;
 
   ngOnInit(): void {
+
+    this.user = this.sessionService.getUser();
+
+    if(!this.user) return;
+
     this.tipoDeGastoService.getAll().subscribe({
       next: (data) => {
         this.data = data;

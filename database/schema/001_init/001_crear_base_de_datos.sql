@@ -11,3 +11,9 @@ GO
 -- CREAR BASE DE DATOS
 CREATE DATABASE MoneyFlowSystemDB;
 GO
+
+Use MoneyFlowSystemDB;
+GO
+
+SELECT name FROM sys.tables;
+GO

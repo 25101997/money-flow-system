@@ -27,15 +27,15 @@ docker start sqlserver-test
 
 money-flow-system/database$
 
-docker run -it --rm -v "$PWD":/database:ro -w /database --network money-flow-system_app-network mcr.microsoft.com/mssql-tools bash
+dlopez@dlopez:~/repos/money-flow-system/database$ docker run -it --rm -v "$PWD":/database:ro -w /database --network money-flow-system_app-network mcr.microsoft.com/mssql-tools bash
+
+
 
 /opt/mssql-tools/bin/sqlcmd -S database,1433 -U sa -P 'SuperSecret123!' -i 001_crear_base_de_datos.sql
 
-INSERT INTO mfs.TipoDeGasto (Nombre, Descripcion, MontoMaximo) VALUES ('Ahorro', 'Gasto relacionado a ahorro mensual', 500.00);
-
 
 dlopez@dlopez:~/repos/money-flow-system$ chmod 777 ~/repos/money-flow-system/database/backups
-dlopez@dlopez:~/repos/money-flow-system$ docker exec -it money-flow-system-db-1 /opt/mssql-tools18/bin/sqlcmd \
+dlopez@dlopez:~/repos/money-flow-system/database$ docker exec -it money-flow-system-db-1 /opt/mssql-tools18/bin/sqlcmd \
   -S localhost -U sa -P 'SuperSecret123!' -C \
   -Q "BACKUP DATABASE [MoneyFlowSystemDB] TO DISK = N'/backups/MoneyFlowSystemDB_dev_full.bak' WITH INIT, STATS = 10"
 
